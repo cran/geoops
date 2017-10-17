@@ -7,7 +7,7 @@ knitr::opts_chunk$set(
 )
 
 ## ----eval=FALSE----------------------------------------------------------
-#  install.packages("leaflet")
+#  install.packages("geoops")
 
 ## ----eval=FALSE----------------------------------------------------------
 #  devtools::install_github("ropenscilabs/geoops")

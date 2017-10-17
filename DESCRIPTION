@@ -4,7 +4,7 @@ Title: 'GeoJSON' Topology Calculations and Operations
 Description: Tools for doing calculations and manipulations on 'GeoJSON',
     a 'geospatial' data interchange format (<https://tools.ietf.org/html/rfc7946>).
     'GeoJSON' is also valid 'JSON'.
-Version: 0.1.0
+Version: 0.1.2
 Authors@R: c(
 		person("Scott", "Chamberlain", role = c("aut", "cre"), email = "myrmecocystus+r@gmail.com"),
 		person("Niels", "Lohmann", role = "cph")
@@ -19,9 +19,9 @@ SystemRequirements: C++11
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
 NeedsCompilation: yes
-Packaged: 2017-10-13 17:15:50 UTC; sacmac
+Packaged: 2017-10-17 19:55:19 UTC; sacmac
 Author: Scott Chamberlain [aut, cre],
   Niels Lohmann [cph]
 Maintainer: Scott Chamberlain <myrmecocystus+r@gmail.com>
 Repository: CRAN
-Date/Publication: 2017-10-14 14:30:02 UTC
+Date/Publication: 2017-10-17 20:53:55 UTC
