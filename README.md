@@ -3,8 +3,8 @@ geoops
 
 
 
-[![Build Status](https://travis-ci.org/ropenscilabs/geoops.svg?branch=master)](https://travis-ci.org/ropenscilabs/geoops)
-[![codecov](https://codecov.io/gh/ropenscilabs/geoops/branch/master/graph/badge.svg)](https://codecov.io/gh/ropenscilabs/geoops)
+[![Build Status](https://travis-ci.org/ropensci/geoops.svg?branch=master)](https://travis-ci.org/ropensci/geoops)
+[![codecov](https://codecov.io/gh/ropensci/geoops/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/geoops)
 [![rstudio mirror downloads](https://cranlogs.r-pkg.org/badges/geoops)](https://github.com/metacran/cranlogs.app)
 [![cran version](https://www.r-pkg.org/badges/version/geoops)](https://cran.r-project.org/package=geoops)
 
@@ -31,7 +31,7 @@ for working with JSON in C++.
 
 See also:
 
-* [geofilter](https://github.com/ropenscilabs/geofilter)
+* [geofilter](https://github.com/ropensci/geofilter)
 * [geojson](https://github.com/ropensci/geojson)
 
 Package API:
@@ -42,7 +42,6 @@ Package API:
 #>  - geo_midpoint
 #>  - geo_bbox_polygon
 #>  - geo_pointgrid
-#>  - geo_bbox
 #>  - geo_area
 #>  - geo_get_coords
 #>  - version
@@ -69,7 +68,7 @@ Dev version
 
 
 ```r
-devtools::install_github("ropenscilabs/geoops")
+devtools::install_github("ropensci/geoops")
 ```
 
 
@@ -82,7 +81,7 @@ library("geoops")
 
 ```r
 geoops::version()
-#> [1] "{\"compiler\":{\"c++\":\"201103\",\"family\":\"clang\",\"version\":\"9.0.0 (clang-900.0.37)\"},\"copyright\":\"(C) 2013-2017 Niels Lohmann\",\"name\":\"JSON for Modern C++\",\"platform\":\"apple\",\"url\":\"https://github.com/nlohmann/json\",\"version\":{\"major\":2,\"minor\":1,\"patch\":1,\"string\":\"2.1.1\"}}"
+#> [1] "{\"compiler\":{\"c++\":\"201103\",\"family\":\"clang\",\"version\":\"9.0.0 (clang-900.0.39.2)\"},\"copyright\":\"(C) 2013-2017 Niels Lohmann\",\"name\":\"JSON for Modern C++\",\"platform\":\"apple\",\"url\":\"https://github.com/nlohmann/json\",\"version\":{\"major\":3,\"minor\":1,\"patch\":1,\"string\":\"3.1.1\"}}"
 ```
 
 ## distance
@@ -214,6 +213,8 @@ geo_nearest(point1, points)
 
 ## comparison to rgeos
 
+### distance
+
 
 ```r
 library(rgeos)
@@ -226,12 +227,35 @@ rgeospt2 <- rgeos::readWKT("POINT(2 2)")
 microbenchmark::microbenchmark(
   rgeos = rgeos::gDistance(rgeospt1, rgeospt2),
   geoops = geoops::geo_distance(pt1, pt2, units = "miles"),
-  times = 1000L
+  times = 10000L
 )
 #> Unit: microseconds
-#>    expr    min      lq     mean  median     uq       max neval
-#>   rgeos 38.531 45.0870 80.47333 49.1035 54.786 23196.568  1000
-#>  geoops 33.425 37.8765 43.77398 39.5580 42.680   483.714  1000
+#>    expr    min      lq     mean  median      uq      max neval
+#>   rgeos 25.166 28.2415 35.69903 29.4915 31.7615 18693.60 10000
+#>  geoops 23.240 24.9910 33.07648 26.5655 28.7375 41458.95 10000
+```
+
+### nearest
+
+
+```r
+point1 <- '{"type":["Feature"],"properties":{"marker-color":["#0f0"]},"geometry":{"type":["Point"],"coordinates":[28.9658,41.0101]}}'
+point2 <- '{"type":["FeatureCollection"],"features":[{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[28.9739,41.0111]}},{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[28.9485,41.0242]}},{"type":"Feature","properties":{},"geometry":{"type":"Point","coordinates":[28.9387,41.0133]}}]}'
+g1 <- readWKT("MULTILINESTRING((34 54, 60 34), (0 10, 50 10, 100 50))")
+g2 <- readWKT("POINT(100 30)")
+```
+
+
+```r
+microbenchmark::microbenchmark(
+  rgeos = rgeos::gNearestPoints(g1, g2),
+  geoops = geoops::geo_nearest(point1, points),
+  times = 10000L
+)
+#> Unit: microseconds
+#>    expr     min       lq     mean   median      uq       max neval
+#>   rgeos 370.119 391.0525 463.1019 406.9535 453.951 14023.597 10000
+#>  geoops  85.386  94.9875 113.6604 108.6060 117.964  1083.361 10000
 ```
 
 ## Example use case
@@ -268,7 +292,7 @@ Visualize area of the polygons as a histogram
 hist(areas, main = "")
 ```
 
-![plot of chunk unnamed-chunk-18](tools/img/unnamed-chunk-18-1.png)
+![plot of chunk unnamed-chunk-20](tools/img/unnamed-chunk-20-1.png)
 
 Visualize some of the polygons, all of them
 
@@ -276,24 +300,24 @@ Visualize some of the polygons, all of them
 ```r
 library(leaflet)
 leaflet() %>%
-  addTiles() %>%
+  addProviderTiles(provider = "OpenStreetMap.Mapnik") %>%
   addGeoJSON(geojson = x) %>%
   setView(lng = -123, lat = 45, zoom = 7)
 ```
 
-![plot of chunk unnamed-chunk-19](tools/img/unnamed-chunk-19-1.png)
+![plot of chunk unnamed-chunk-21](tools/img/unnamed-chunk-21-1.png)
 
 Just one of them
 
 
 ```r
 leaflet() %>%
-  addTiles() %>%
+  addProviderTiles(provider = "OpenStreetMap.Mapnik") %>%
   addGeoJSON(geojson = polys[1]) %>%
   setView(lng = -122.7, lat = 45.48, zoom = 13)
 ```
 
-![plot of chunk unnamed-chunk-20](tools/img/unnamed-chunk-20-1.png)
+![plot of chunk unnamed-chunk-22](tools/img/unnamed-chunk-22-1.png)
 </details>
 
 
@@ -301,7 +325,7 @@ leaflet() %>%
 
 ## Meta
 
-* Please [report any issues or bugs](https://github.com/ropenscilabs/geoops/issues).
+* Please [report any issues or bugs](https://github.com/ropensci/geoops/issues).
 * License: MIT
 * Get citation information for `geoops` in R doing `citation(package = 'geoops')`
 * Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md).

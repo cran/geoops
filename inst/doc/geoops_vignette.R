@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
 #  install.packages("geoops")
 
 ## ----eval=FALSE----------------------------------------------------------
-#  devtools::install_github("ropenscilabs/geoops")
+#  devtools::install_github("ropensci/geoops")
 
 ## ------------------------------------------------------------------------
 library("geoops")
