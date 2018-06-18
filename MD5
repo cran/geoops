@@ -1,7 +1,7 @@
-8096bc768ee8e809b958cce8eee1c9ae *DESCRIPTION
+9121d53cc368966a9e16f1823821b61b *DESCRIPTION
 1b96a74f7e95cf508e814ad0c04525e5 *LICENSE
 a08752c72d6a2c8f013958adba3cdede *NAMESPACE
-d9b21f75d4fd8f1084c1089c9bcb74d6 *NEWS.md
+d1cf721361caea03eed084c22baa563a *NEWS.md
 b50f12efc6f0e106ff116acad73c697b *R/Feature.R
 d6006b8ef53a1dd2528a77c34d98c37f *R/FeatureCollection.R
 0361f1afe358d58b0160b4bea270b818 *R/GeometryCollection.R
@@ -29,11 +29,11 @@ b460902a318ec4057bfe2351475d8c90 *R/pointgrid.R
 5648d537c8a3b892d147df890bfd500f *R/trianglegrid.R
 afa656d53c84cd4795630412fbf25a8e *R/version.R
 7ce69b6a5925ca960cb8a56119b582a7 *R/zzz.R
-11b072ec099f998ba9bf3ac8eefff905 *README.md
-d18ccad68fec9796b48073d7c2566287 *build/vignette.rds
+b5aab4a8ed1ff28bee3e6332384b0987 *README.md
+4c5153346243d1cf6686f108d28bd588 *build/vignette.rds
 6cc468c3432c772e197cb7431b636451 *inst/doc/geoops_vignette.R
 584da52a98fc3770af431b8bb410dccb *inst/doc/geoops_vignette.Rmd
-6a70667071ce7d0b9c4d70869c5d9751 *inst/doc/geoops_vignette.html
+098e299f5b5da03ad84c02e5ab971af4 *inst/doc/geoops_vignette.html
 209688fa0be77888e5209206b7254826 *inst/examples/zillow_or.geojson
 ad62f04b93a02d05e7ea221e67f711f1 *inst/ignore/boolean-clockwise.cpp
 26119a35d6140a4ea72a64a15d5d4bae *inst/ignore/boolean.R
@@ -95,7 +95,7 @@ eed57822324593d01e67189cb94be2d3 *src/distance.cpp
 fc438dc4e88f24c688173787cd9337c3 *src/get_coords.cpp
 364d57bb527a8f69595294d507d6f907 *src/get_coords.h
 ff9e2ecb0b901347eff2d7df63ff9a98 *src/inside.cpp
-41928f7689ccd47c7701c42c945c1a41 *src/json.h
+4856897931110a4c64ed9326e8853f8b *src/json.h
 8b356d5afe47ef25011756fe0e950d0a *src/line_distance.cpp
 ea7d7a5f7d5625a781296bb2eef5587a *src/midpoint.cpp
 d1760830da11cde75270de90588c3588 *src/planepoint.cpp
@@ -121,6 +121,6 @@ f4c43986295fbec3bcb6cae319bf991f *tests/testthat/test-pointgrid.R
 ca3e2e2a375eb44d7d5915dd335e6603 *tools/img/unnamed-chunk-18-1.png
 d6f38836bafe8bfeb2b6823b265de764 *tools/img/unnamed-chunk-19-1.png
 ca3e2e2a375eb44d7d5915dd335e6603 *tools/img/unnamed-chunk-20-1.png
-bdf02ff0aa927d915a65e6d23cc79015 *tools/img/unnamed-chunk-21-1.png
-27bc7fd370b8f229ebdb7dfd2d9915c4 *tools/img/unnamed-chunk-22-1.png
+6f744a2fea1177096f2570ebd22cb0e9 *tools/img/unnamed-chunk-21-1.png
+59b952035b47664311685b32667f9fb9 *tools/img/unnamed-chunk-22-1.png
 584da52a98fc3770af431b8bb410dccb *vignettes/geoops_vignette.Rmd
