@@ -1,58 +1,24 @@
----
-title: "Introduction to the geoops package"
-author: "Scott Chamberlain"
-date: "`r Sys.Date()`"
-output:
-  html_document:
-    toc: true
-    toc_float: true
-    theme: readable
-vignette: >
-  %\VignetteIndexEntry{Introduction to the geoops package}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-```{r echo=FALSE}
+## ----echo=FALSE---------------------------------------------------------------
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
   warning = FALSE,
   message = FALSE
 )
-```
 
-`geoops` is an R package.
+## ----eval=FALSE---------------------------------------------------------------
+#  install.packages("geoops")
 
-## Install
+## ----eval=FALSE---------------------------------------------------------------
+#  remotes::install_github("ropensci/geoops")
 
-CRAN version
-
-```{r eval=FALSE}
-install.packages("geoops")
-```
-
-Or, the development version
-
-```{r eval=FALSE}
-devtools::install_github("ropensci/geoops")
-```
-
-```{r}
+## -----------------------------------------------------------------------------
 library("geoops")
-```
 
-## get json c++ library version info
-
-```{r}
+## -----------------------------------------------------------------------------
 geoops::version()
-```
 
-## distance
-
-Calculate distance between two GeoJSON points
-
-```{r}
+## -----------------------------------------------------------------------------
 pt1 <- '{
   "type": "Feature",
   "properties": {
@@ -74,31 +40,17 @@ pt2 <- '{
       "coordinates": [-75.534, 39.123]
     }
 }'
-```
 
-```{r}
+## -----------------------------------------------------------------------------
 geo_distance(pt1, pt2)
-```
 
-## bearing
-
-Calculate bearing between two points
-
-```{r}
+## -----------------------------------------------------------------------------
 geo_bearing(pt1, pt2)
-```
 
-## destination
-
-```{r}
+## -----------------------------------------------------------------------------
 geo_destination(pt1, 50, 90, 'miles')
-```
 
-## line distance
-
-Calculate length of GeoJSON LineString or Polygon
-
-```{r}
+## -----------------------------------------------------------------------------
 line <- '{
   "type": "Feature",
   "properties": {},
@@ -115,13 +67,8 @@ line <- '{
   }
 }'
 geo_line_distance(line, units = "kilometers")
-```
 
-## nearest
-
-Calculate nearest point to a reference point
-
-```{r}
+## -----------------------------------------------------------------------------
 point1 <- '{
   "type": "Feature",
   "properties": {
@@ -161,5 +108,4 @@ points <- '{
   ]
 }'
 geo_nearest(point1, points)
-```
 
